@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  rmq:
+    # You can access it by visiting http://localhost:15672 in a browser with the default
+    # username and password of guest / guest
+    image: rabbitmq:3-management-alpine
+    networks:
+      - rmq-net
+    secrets:
+      - rabbitmq_default_pass
+    ports:
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+    volumes:
+      - rmq:/var/lib/rabbitmq
+
+volumes:
+  rmq:
+
+networks:
+  rmq-net:
+    name: rmq-net
