@@ -14,7 +14,7 @@ services:
       - rmq:/var/lib/rabbitmq
     deploy:
       placement:
-        constraints: [ node.role == manager ]
+        constraints: [ node.labels.worker == worker-1 ]
 
 volumes:
   rmq:
